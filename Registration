@@ -1,0 +1,139 @@
+import datetime
+
+account = []
+
+pasr = []
+
+fulln = []
+
+birthdate = []
+
+ages = []
+
+stats = []
+
+occup = []
+
+num = 2
+
+store = {}
+
+print("Welcome to phinma registration!")
+
+a = input("Do you want to register an account? ")
+
+while a == 'Y' or a == 'y':
+
+    for i in range(num):
+
+        print("-------Registering account.--------")
+
+        full = input("Enter your Fullname: ")
+
+        user = input("Enter your username: ")
+
+        pas = input("Enter your password: ")
+
+        store[user]=pas
+
+        birth = input("Enter your birthdate: ")
+
+        age = input("Enter your age: ")
+
+        stat = input("Your status: ")
+
+        occu = input("Enter your occupation: ")
+
+        
+
+        fulln.append(full)
+
+        account.append(user)
+
+        pasr.append(pas)
+
+        birthdate.append(birth)
+
+        ages.append(age)
+
+        stats.append(stat)
+
+        occup.append(occu)
+
+        x = datetime.datetime.now()
+
+        print("\b\b\b\b\b\bAccount successfully Registered!\b\b\b\b\b\n ")
+
+    else:
+
+        break
+
+    break
+
+else:
+
+    print("invalid input!")
+
+    exit()
+
+print("Try to log-in here: ")
+
+while True:
+
+    user_name = input("Enter username: ")
+
+    index1 = account.index(user_name)
+
+    full = fulln[index1]
+
+    pas_s = input("Enter password")
+
+    for j in store:
+
+        if j == user_name:
+
+            if pas_s == store[j]:
+
+                print("Welcome!",full)
+
+            else:
+
+                print("Invalid")
+
+print("\nAccount name:\t\t\tAccount Username:\n")
+
+for i in range(num):
+
+    print("{}\t\t\t\t\t{}".format(fulln[i], account[i]))
+
+search_profile = input("Search profile, Please input valid username:")
+
+print("Result: ")
+
+if search_profile in account:
+
+    print("Existing account found! ")
+
+    print("\b\b\b\b\b\b\bAccount Details:\b\b\b\b\b\b\b")
+
+    index = account.index(search_profile)
+
+    full = fulln[index]
+
+    birth = birthdate[index]
+
+    age = ages[index]
+
+    stat = stats[index]
+
+    occu = occup[index]
+
+    print("username: {}\nAccount username:{}\nBirthday:{}\nAge:{}\nstats:{}\noccup:{}".format(search_profile, full, birth, age, stat, occu))
+
+    print("account created since: ",x)
+
+    print(x)
+
+else:
+
+    print("lol")
