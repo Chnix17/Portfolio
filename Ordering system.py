@@ -20,3 +20,4 @@ print("Total: ",total1)  #Total of purchase
 print("Cash amount: ",cash) 
 print("Change: ",(cash-total1))
 print("   THANK YOU FOR PURCHASING!")
+
