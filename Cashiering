@@ -1,0 +1,922 @@
+
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.time.LocalDate;
+public class cash {
+ 
+public int price;
+/*method 1*/
+public int stock1 = 15;
+public int stock2 = 8;
+public int stock3 = 13;
+public int stock4 = 15;
+
+public boolean t10 = true;
+public boolean t6 = true;
+public boolean t7 = true;
+public boolean t8 = true;
+public boolean t9 = true;
+
+
+/*method 2 */
+public int stock9 = 12;
+public int stock8 = 15;
+public int stock7 = 10;
+public int stock6 = 20;
+
+public boolean t11 = true;
+public boolean t12 = true;
+public boolean t13 = true;
+public boolean t14 = true;
+public boolean t15 = true;
+
+/*method 3*/
+public int stock11 = 17;
+public int stock12 = 15;
+public int stock13 = 8;
+public int stock14 = 16;
+
+static boolean t16 = true;
+static boolean t17 = true;
+static boolean t18 = true;
+static boolean t19= true;
+static boolean t20= true;
+
+/*method 4 */
+public int stock15 = 14;
+public int stock16 = 7;
+public int stock17 = 8;
+public int stock18 = 12;
+
+public boolean t21= true;
+public boolean t22 = true;
+public boolean t23 = true;
+public boolean t24 = true;
+public boolean t25 = true;
+
+public int stock20 = 16;
+public int stock21 = 20;
+public int stock22 = 26;
+public int stock23 = 14;
+public int stock24 = 10;
+
+
+/*method 5*/
+public boolean t26 = true;
+public boolean t27= true;
+public boolean t28 = true;
+public boolean t29 = true;
+public boolean t30 = true;
+
+public int stock27 = 16;
+public int stock26 = 12;
+public int stock28 = 15;
+public int stock29 = 12;
+public int stock30 = 8;
+
+        ArrayList<String> items = new ArrayList<String>();
+        ArrayList<Integer> quan = new ArrayList<Integer>();
+        ArrayList<Integer> subtotal = new ArrayList<Integer>();
+        ArrayList<Integer> quan1 = new ArrayList<Integer>();
+   public static void main(String[] args){
+        cash m = new cash();
+      m.men();
+  }
+    public void men(){
+        try{
+          Scanner user = new Scanner(System.in);
+       System.out.print("[1]Login\n[2]Exit\nOption>>: ");
+       int choice = user.nextInt();
+       switch(choice){
+           case 1:
+               System.out.println(" ");
+               customer();
+           case 2:
+               System.out.println("Thank you for using this system! Come back again.");
+               System.exit(0);
+           default:
+               System.out.println("\n[Not even in the choice]\n");
+               men();
+               
+       }
+        }catch(Exception e){
+          System.out.println("Invalid input.");
+        }
+       
+    }
+    public void choice(){
+            try{
+              Scanner user = new Scanner(System.in);
+        System.out.println("\nplease choose desired option below");
+        System.out.println("[1]Drinks\n[2]Biscuits\n[3]Junkfoods\n[4] Detergent\n[5]Shampoo\n[6]Counter\n[7]Log-out");
+        System.out.print("Choose an order >>");
+             int choice = user.nextInt();
+            switch(choice){
+                case 1:
+                    System.out.println("\n[You choose Drinks]\n");
+                    cashier1();
+                    break;
+                   
+                case 2:
+                    System.out.println("\n[You choose Biscuits]\n");
+                    cashier2();
+                    break;
+                case 3:
+                    System.out.println("\n[You choose Junkfoods]\n");
+                    cashier3();
+                    break;
+                case 4:
+                     System.out.println(" \n[You choose Detergent]\n");
+                     cashier4();
+
+                     break;
+                case 5:
+                     System.out.println("\n[You choose blah blaah]\n");
+                      cashier5();
+                case 6:
+                    
+                    System.out.println("\n[Proceeding to cashier...]\n");
+                    getTotal();
+                case 7:
+                    items.removeAll(items);
+                    quan.removeAll(quan);
+                    quan1.removeAll(quan1);
+                    subtotal.removeAll(subtotal);
+                    
+                    System.out.println("Successfully log-out");
+                    men();
+                default:
+                    System.out.println("not in the choice ");
+                    choice();
+                    break;
+            
+            }
+            }catch(Exception e){
+              System.out.println("\n[Invalid input]\n ");
+              choice();
+            }
+            
+    }
+    public void customer(){
+
+      String username, password;
+      Scanner input = new Scanner(System.in);
+      System.out.print("Enter your username: ");
+      username = input.nextLine();
+      
+      System.out.print("Enter your password: ");
+      password = input.nextLine();
+      
+      // Check if the username and password are correct
+      if (username.equals(username) && password.equals(password)) {
+         System.out.println("Login successful!\n\n");
+         System.out.println("                                   -WELCOME TO CHRISTIAN MARK STORE-                     ");
+         choice();
+      } else {
+         System.out.println("Invalid username or password.");
+      }
+    }
+    public int cashier1(){
+        try{
+          int srp = 0, quantity = 0, totalsrp = 0;
+        Scanner user = new Scanner(System.in);
+        System.out.println("\n\n[1]Water bottle  15$\t\t\tstock:"+stock1+"\n[2]Coke 20$\t\t\tstock:"+stock8+"\n[3]beer 55$\t\t\tstock:  "+stock7+"\n[4]apple juice 15$\t\t\tstock: "+stock6+"\n[5]go back");
+                System.out.print("\nChoose an order >>");
+                int choice1 = user.nextInt();
+                switch(choice1){
+                    case 1:                      
+                        if(stock1>0 && t11){
+                         srp+=15;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock1){
+                           quan.add(quantity);
+                             stock1-=quantity;
+                             items.add("Water bottle 500ml");
+                             quan1.add(15);
+                        totalsrp = quantity * srp;
+                        price = price + totalsrp;
+                        order();
+                        return stock1;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t11 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 2:
+                        if(stock8>0 && t12){
+                         srp+=20;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock8){
+                             items.add("Coke Mismo 240ml");
+                             quan.add(quantity);
+                             quan1.add(20);
+                        totalsrp = quantity * srp;
+                        stock8-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock8;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t12 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 3:                     
+                        if(stock7>0 && t13){
+                         srp+=20;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock7){
+                             items.add("Royal Mismo 240ml");
+                             quan.add(quantity);
+                             quan1.add(20);
+                        totalsrp = quantity * srp;
+                        stock7-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock7;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t13 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 4:                       
+                        if(stock6>0 && t14){
+                         srp+=20;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock6){
+                             items.add("Sprite mismo 240ml.");
+                             quan.add(quantity);
+                             quan1.add(20);
+                        totalsrp = quantity* srp;
+                        stock6-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock6;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t14 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 5:
+                        choice();
+                        price = price + totalsrp;
+                }
+        }catch(Exception e){
+          System.out.println("Invalid input");
+          cashier1();
+        }
+        return price;
+        }
+    public int cashier2(){
+        try{
+          int srp = 0, quantity = 0,totalsrp = 0;
+        Scanner user = new Scanner(System.in);
+        System.out.println("\n\n[1]Bravo  6$\t\t\tstock: "+stock11+"\n[2]Skyflakes 8$\t\t\tstock:"+stock12+"\n[3]choco tops 7$\t\t\tstock: "+stock13+"\n[4]ace 7$\t\t\tstock: "+stock14+"\n[5]go back"); 
+                System.out.print("\nChoose an order: ");
+                int choice1 = user.nextInt();
+                switch(choice1){
+                    case 1:                      
+                        if(stock11>0 && t16){
+                         srp+=6;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock11){
+                             stock11-=quantity;
+                             items.add("bBravo");
+                             quan.add(quantity);
+                             quan1.add(6);
+                        totalsrp = quantity * srp;
+                        price = price + totalsrp;
+                        order();
+                        return stock11;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier2();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t16 = false;
+                          cashier2();
+                        }
+                        break;
+                    case 2:
+                        if(stock12>0 && t17){
+                         srp+=8;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock12){
+                             items.add("skyflakes");
+                             quan.add(quantity);
+                             quan1.add(8);
+                        totalsrp = quantity* srp;
+                        stock12-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock12;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t17 = false;
+                          cashier2();
+                        }
+                        break;
+                    case 3:                     
+                        if(stock13>0 && t18){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock13){
+                             items.add("choco tops");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity * srp;
+                        stock12-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock13;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier2();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t18 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 4:                       
+                        if(stock14>0 && t19){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock14){
+                             items.add("Ace");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity * srp;
+                        stock14-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock14;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier2();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t19 = false;
+                          cashier2();
+                        }
+                        break;
+                    case 5:
+                        choice();
+                        price = price + totalsrp;
+                }
+        }catch(Exception e){
+          System.out.println("Invalid input");
+          cashier1();
+        }
+        return price;
+        }
+    
+   public int cashier3(){
+        try{
+          int srp = 0, quantity = 0, totalsrp = 0;
+        Scanner user = new Scanner(System.in);
+        System.out.println("\n\n[1]cheesy 7$\t\t\tstock: "+stock15+"\n[2]Martes 8$\t\t\tstock:"+stock16+"\n[3]Mang juan 7$\t\t\tstock:"+stock17+"\n[4]spicy seafood 7$\t\t\tstock: "+stock18+"\n[5]go back");
+                System.out.print("\nChoose an order >>");
+                int choice1 = user.nextInt();
+                switch(choice1){
+                    case 1:                      
+                        if(stock15>0 && t21){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock15){
+                             stock15-=quantity;
+                             items.add("Cheesy");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity * srp;
+                        price = price + totalsrp;
+                        order();
+                        return stock15;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier3();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t21 = false;
+                          cashier3();
+                        }
+                        break;
+                    case 2:
+                        if(stock16>0 && t22){
+                         srp+=8;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock16){
+                             items.add("martes");
+                             quan.add(quantity);
+                             quan1.add(8);
+                        totalsrp = quantity * srp;
+                        stock16-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock16;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier3();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t22 = false;
+                          cashier3();
+                        }
+                        break;
+                    case 3:                     
+                        if(stock17>0 && t23){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock17){
+                             items.add("mang juan");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity * srp;
+                        stock17-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock17;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier3();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t23 = false;
+                          cashier3();
+                        }
+                        break;
+                    case 4:                       
+                        if(stock18>0 && t24){
+                         srp+=15;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock18){
+                             items.add("piattos");
+                             quan.add(quantity);
+                             quan1.add(15);
+                        totalsrp = quantity * srp;
+                        stock2-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock18;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier1();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t24 = false;
+                          cashier1();
+                        }
+                        break;
+                    case 5:
+                        choice();
+                        price = price + totalsrp;
+                }
+        }catch(Exception e){
+          System.out.println("Invalid input");
+          cashier1();
+        }
+        return price;
+        }
+    public int cashier4(){
+        try{
+          int srp = 0, quantity = 0, totalsrp = 0;
+        Scanner user = new Scanner(System.in);
+        System.out.println("\n\n[1]Surf powder  6$\t\t\tstock:"+stock20+"\n[2]Pride powder 6$\t\t\tstock: "+stock21+"\n[3]breezy 11$\t\t\tstock:"+stock22+"\n[4]wings powder 7$\t\t\tstock: "+stock24+"\n[5]go back");
+                System.out.print("\nChoose an order >>");
+                int choice1 = user.nextInt();
+                switch(choice1){
+                    case 1:                      
+                        if(stock20>0 && t21){
+                         srp+=6;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock20){
+                             stock20-=quantity;
+                             items.add("Surf powder");
+                             quan.add(quantity);
+                             quan1.add(6);
+                        totalsrp = quantity * srp;
+                        price = price + totalsrp;
+                        order();
+                        return stock20;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier4();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t21 = false;
+                          cashier4();
+                        }
+                        break;
+                    case 2:
+                        if(stock21>0 && t22){
+                         srp+=6;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock21){
+                             items.add("Pride Powder");
+                             quan.add(quantity);
+                             quan1.add(6);
+                        totalsrp = quantity* srp;
+                        stock21-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock21;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier4();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t22 = false;
+                          cashier4();
+                        }
+                        break;
+                    case 3:                     
+                        if(stock22>0 && t23){
+                         srp+=11;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock23){
+                             items.add("breez");
+                             quan.add(quantity);
+                             quan1.add(11);
+                        totalsrp = quantity* srp;
+                        stock23-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock23;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier4();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t23 = false;
+                          cashier4();
+                        }
+                        break;
+                    case 4:                       
+                        if(stock24>0 && t24){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock24){
+                             items.add("wings powder");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity* srp;
+                        stock24-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock1;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier4();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t24 = false;
+                          cashier4();
+                        }
+                        break;
+                    case 5:
+                        choice();
+                        price = price + totalsrp;
+                }
+        }catch(Exception e){
+          System.out.println("Invalid input");
+          cashier1();
+        }
+        return price;
+        
+    
+    }
+    public int cashier5(){
+        try{
+          int srp = 0, quantity =  0, totalsrp = 0;
+        Scanner user = new Scanner(System.in);
+        System.out.println("\n\n[1]Head n' Shoulder  7$\t\t\tstock: "+stock26+"\n[2]Palmolive 8$\t\t\tstock:"+stock27+"\n[3]Clear 9$\t\t\tstock:"+stock28+"\n[4]Dove 8$       stock: "+stock29+"\n[5]go back");
+                System.out.print("\nChoose an order >>");
+                int choice1 = user.nextInt();
+                switch(choice1){
+                    case 1:
+                        if(stock26>0 && t26){
+                         srp+=7;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock26){
+                             items.add("Head N' Shoulder");
+                             quan.add(quantity);
+                             quan1.add(7);
+                        totalsrp = quantity * srp;
+                        stock26-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock26;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier5();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t26= false;
+                          cashier5();
+                        }
+                        break;
+                    case 2:
+                        if(stock27>0 && t27){
+                         srp+=8;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock27){
+                             items.add("Palmolive");
+                             quan.add(quantity);
+                             quan1.add(8);
+                        totalsrp = quantity * srp;
+                        stock27-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock27;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier5();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t27= false;
+                          cashier5();
+                        }
+                        break;
+                    case 3:                     
+                        if(stock28>0 && t28){
+                         srp+=9;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock28){
+                             items.add("Clear");
+                             quan.add(quantity);
+                             quan1.add(9);
+                        totalsrp = quantity* srp;
+                        stock28-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock28;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier5();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t28 = false;
+                          cashier5();
+                        }
+                        break;
+                    case 4:                       
+                        if(stock29>0 && t29){
+                         srp+=8;
+                        System.out.print("Enter quantity>>");
+                        quantity = user.nextInt();
+                        if(quantity>0){
+                           if(quantity<=stock29){
+                             items.add("Dove");
+                             quan.add(quantity);
+                             quan1.add(8);
+                        totalsrp = quantity* srp;
+                        stock29-=quantity;
+                        price = price + totalsrp;
+                        order();
+                        return stock29;
+                           }else{
+                             System.out.println("\n[Exceed amount]\n");
+                             cashier5();
+                           }
+                        }else{
+                        System.out.println("Invalid quantity.");
+                        }
+                        }else{
+                          System.out.println("This product is not available");
+                          t29 = false;
+                          cashier5();
+                        }
+                        break;
+                    case 5:
+                        choice();
+                        price = price + totalsrp;
+                }
+        }catch(Exception e){
+          System.out.println("Invalid input");
+          cashier5();
+        }
+        return price;
+        }
+    public void getTotal() {
+    if(price>0){
+       System.out.println("Order Total\n"+ price+"\n");
+     cashier();
+    }else{
+        System.out.println("You don't have any purchase");
+        choice();
+    }
+    
+}
+    public void cashier(){
+           try{
+       Scanner user = new Scanner(System.in);
+       for(int i = 0; i<3; i++){
+         System.out.print("Enter Cash To Pay: ");
+         int cash = user.nextInt();
+         if(cash>=price){
+         int cash1 = cash - price;
+         
+         int current = 0;
+         while(current < items.size()){
+             int j = 0;
+             boolean removed = false;
+             while(j < current){
+                 if(items.get(current).equals(items.get(j))){
+                  items.remove(current);
+                  removed = true;
+                  break;
+                 }
+                 else j++;
+            }
+             if(!removed)current++;
+         }
+         LocalDate myObj = LocalDate.now();
+         System.out.println("                                   -Christian Mark Store-                      ");
+         System.out.println("                                    -Official Reciept-                      ");
+         System.out.println("\t\t\t\t\tDate printed: "+myObj);
+         System.out.println("Item\t\t\t\tPrice\t\t\t\tQuantity\t\tSubtotal");
+        System.out.println("-----------------------------------------------------------------------------------------------");
+         ArrayList<Integer> sumList = new ArrayList<>();
+         int size = quan1.size();
+         try{
+           for (int b = 0; b < size; b++) {
+            int sum = quan1.get(b) * quan.get(b);
+            sumList.add(sum);
+        }
+         for(int z = 0; z<items.size() || z<quan.size() || z<sumList.size() || z<quan1.size(); z++){
+               System.out.println(items.get(z)+"\t\t"+quan1.get(z)+"\t\t\t\t"+quan.get(z)+"\t\t\t\t"+sumList.get(z)); if(z<quan.size() - 1 || z<sumList.size() - 1 || z<quan1.size() - 1){ System.out.println("");}
+         }
+         }catch(Exception e){
+          System.out.println("invalid");
+         }
+         System.out.println("Total: "+price);
+         System.out.println("Payment: "+cash);
+         System.out.println("Change: " + cash1);
+         System.out.println("==================================================================================================");
+         price = price - price;
+         
+         choice();
+           
+         }else{
+           System.out.println("\n[Invalid amount!]\n ");
+         }
+
+       }
+       
+    }catch(Exception e){
+      System.out.println("try again.");
+      cashier();
+    }
+    }
+    public void order(){
+        try{
+        Scanner user = new Scanner(System.in);
+        System.out.print("\nDo you want to order again?\n[1]Yes[2]Proceed to cashier\n>>:"); 
+        int type = user.nextInt();
+        
+        switch(type){
+          case 1:
+              choice();
+          case 2:
+              getTotal();
+        }
+        }catch(Exception e){
+          System.out.println("invalid choice. try again.");
+}
+      
+}
+    
+}
+    
